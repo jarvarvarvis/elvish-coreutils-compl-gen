@@ -153,7 +153,16 @@ def get_coreutil_args(name):
 
     return args
 
-for coreutil in coreutils_binaries:
-    print(f"{coreutil}: ")
-    for line in get_coreutil_args(coreutil):
-        print(f"* {line}")
+with open("complete.elv", "w") as f:
+    f.write("# Generated using completion-generator.py\n")
+
+    for coreutil in coreutils_binaries:
+        # Write the completion options to the file
+        formatted_arg_list = str(get_coreutil_args(coreutil)).replace(",", "")
+        f.write(f"var {coreutil}-options = {formatted_arg_list}\n")
+
+        # Write the completion provider to the file
+        f.write("set edit:completion:arg-completer[{0}] = {{|@args| put $@{0}-options }}\n".format(coreutil) )
+
+        # Write a newline for formatting reasons
+        f.write("\n")
