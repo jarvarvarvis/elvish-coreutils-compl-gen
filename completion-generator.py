@@ -160,9 +160,12 @@ with open("complete.elv", "w") as f:
         # Write the completion options to the file
         formatted_arg_list = str(get_coreutil_args(coreutil)).replace(",", "")
         f.write(f"var {coreutil}-options = {formatted_arg_list}\n")
+    
+    f.write("\n")
 
-        # Write the completion provider to the file
-        f.write("set edit:completion:arg-completer[{0}] = {{|@args| put $@{0}-options }}\n".format(coreutil) )
-
-        # Write a newline for formatting reasons
-        f.write("\n")
+    # Wrap setting the arg completers in function that can be called in rc.elv
+    f.write("fn apply {\n")
+    for coreutil in coreutils_binaries:
+        # Write the completion providers to the file
+        f.write("   set edit:completion:arg-completer[{0}] = {{|@args| put $@{0}-options }}\n".format(coreutil) )
+    f.write("}\n")
