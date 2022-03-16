@@ -123,7 +123,7 @@ cmd chown
 -v, --verbose,,output a diagnostic for every file processed
 --dereference,,affect the referent of each symbolic link (this is the default), rather than the symbolic link itself
 -h, --no-dereference,,affect symbolic links instead of any referenced file (useful only on systems that can change the ownership of a symlink)
---from=CURRENT_OWNER:CURRENT_GROUP change the owner and/or group of each file only if its current owner and/or group match those specified here. Either may be omitted, in which case a match is not required for the omitted attribute
+--from=CURRENT_OWNER:CURRENT_GROUP,,change the owner and/or group of each file only if its current owner and/or group match those specified here. Either may be omitted, in which case a match is not required for the omitted attribute
 --no-preserve-root,,do not treat '/' specially (the default)
 --preserve-root,,fail to operate recursively on '/'
 --reference=RFILE,,use RFILE's owner and group rather than specifying OWNER:GROUP values
@@ -272,8 +272,7 @@ lcase,,change upper case to lower case
 ucase,,change lower case to upper case
 sparse,,try to seek rather than write all-NUL output blocks
 swab,,swap every pair of input bytes
-sync,,pad every input block with NULs to ibs-size; when used
-with block or unblock, pad with spaces rather than NULs
+sync,,pad every input block with NULs to ibs-size; when used with block or unblock, pad with spaces rather than NULs
 excl,,fail if the output file already exists
 nocreat,,do not create the output file
 notrunc,,do not truncate the output file
@@ -337,12 +336,12 @@ cmd dir
 --format=WORD,,across -x, commas -m, horizontal -x, long -l, single-column -1, verbose -l, vertical -C
 --full-time,,like -l --time-style=full-iso
 -g,,like -l, but do not list owner
---group-directories-first group directories before files; can be augmented with a --sort option, but any use of --sort=none (-U) disables grouping
+--group-directories-first,,group directories before files; can be augmented with a --sort option, but any use of --sort=none (-U) disables grouping
 -G, --no-group,,in a long listing, don't print group names
 -h, --human-readable,,with -l and -s, print sizes like 1K 234M 2G etc.
 --si,,likewise, but use powers of 1000 not 1024
--H, --dereference-command-line follow symbolic links listed on the command line
---dereference-command-line-symlink-to-dir follow each command line symbolic link that points to a directory
+-H, --dereference-command-line,,follow symbolic links listed on the command line
+--dereference-command-line-symlink-to-dir,,follow each command line symbolic link that points to a directory
 --hide=PATTERN,,do not list implied entries matching shell PATTERN (overridden by -a or -A)
 --hyperlink[=WHEN],,hyperlink file names; WHEN can be 'always' (default if omitted), 'auto', or 'never'
 --indicator-style=WORD,,append indicator with style WORD to entry names: none (default), slash (-p), file-type (--file-type), classify (-F)
@@ -355,7 +354,7 @@ cmd dir
 -n, --numeric-uid-gid,,like -l, but list numeric user and group IDs
 -N, --literal,,print entry names without quoting
 -o,,like -l, but do not list group information
--p, --indicator-style=slash append / indicator to directories
+-p, --indicator-style=slash,,append / indicator to directories
 -q, --hide-control-chars,,print ? instead of nongraphic characters
 --show-control-chars,,show nongraphic characters as-is (the default, unless program is 'ls' and output is a terminal)
 -Q, --quote-name,,enclose entry names in double quotes
@@ -638,8 +637,7 @@ cmd ls
 -R, --recursive,,list subdirectories recursively
 -s, --size,,print the allocated size of each file, in blocks
 -S,,sort by file size, largest first
---sort=WORD,,sort by WORD instead of name: none (-U), size (-S),
-time (-t), version (-v), extension (-X), width
+--sort=WORD,,sort by WORD instead of name: none (-U), size (-S), time (-t), version (-v), extension (-X), width
 --time=WORD,,change the default of using modification times; access time (-u): atime, access, use; change time (-c): ctime, status; birth time: birth, creation; with -l, WORD determines which time to show; with --sort=time, sort by WORD (newest first)
 --time-style=TIME_STYLE,,time/date format with -l; see TIME_STYLE below
 -t,,sort by time, newest first; see --time
@@ -843,8 +841,7 @@ cmd pr
 -D, --date-format=FORMAT,,use FORMAT for the header date
 -e[CHAR[WIDTH]], --expand-tabs[=CHAR[WIDTH]],,expand input CHARs (TABs) to tab WIDTH (8)
 -F, -f, --form-feed,,use form feeds instead of newlines to separate pages (by a 3-line page header with -F or a 5-line header and trailer without -F)
--h, --header=HEADER,,use a centered HEADER instead of filename in page header,
--h "" prints a blank line, don't use -h""
+-h, --header=HEADER,,use a centered HEADER instead of filename in page header, -h "" prints a blank line, don't use -h""
 -i[CHAR[WIDTH]], --output-tabs[=CHAR[WIDTH]],,replace spaces with CHARs (TABs) to tab WIDTH (8)
 -J, --join-lines,,merge full lines, turns off -W line truncation, no column alignment, --sep-string[=STRING] sets separators
 -l, --length=PAGE_LENGTH,,set the page length to PAGE_LENGTH (66) lines (default number of lines of text 56, and with -F 63). implies -t if PAGE_LENGTH <= 10
@@ -909,8 +906,7 @@ cmd readlink
 -e, --canonicalize-existing,,canonicalize by following every symlink in every component of the given name recursively, all components must exist
 -m, --canonicalize-missing,,canonicalize by following every symlink in every component of the given name without requirements on components existence
 -n, --no-newline,,do not output the trailing delimiter
--q, --quiet
--s, --silent,,suppress most error messages (on by default)
+-q, --quiet, -s, --silent,,suppress most error messages (on by default)
 -v, --verbose,,report error messages
 -z, --zero,,end each output line with NUL, not newline
 --help,,display this help and exit
